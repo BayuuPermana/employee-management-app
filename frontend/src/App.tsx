@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from './services/api';
 import { Toaster, toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import {
@@ -50,7 +50,7 @@ function App() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/employees');
+      const response = await apiClient.get('/employees');
       setEmployees(response.data);
     } catch (error) {
       console.error('Error fetching employees:', error);
@@ -60,7 +60,7 @@ function App() {
 
   const addEmployee = async (employee: { name: string; position: string; department: string }) => {
     try {
-      await axios.post('http://localhost:5000/api/employees', employee);
+      await apiClient.post('/employees', employee);
       fetchEmployees(); // Refresh the list
       setShowAddForm(false); // Close the form
       toast.success('Employee added successfully!');
@@ -72,7 +72,7 @@ function App() {
 
   const updateEmployee = async (id: string, employee: { name: string; position: string; department: string }) => {
     try {
-      await axios.put(`http://localhost:5000/api/employees/${id}`, employee);
+      await apiClient.put(`/employees/${id}`, employee);
       fetchEmployees(); // Refresh the list
       setEditingEmployee(null); // Close the form
       toast.success('Employee updated successfully!');
@@ -84,7 +84,7 @@ function App() {
 
   const deleteEmployee = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:5000/api/employees/${id}`);
+      await apiClient.delete(`/employees/${id}`);
       fetchEmployees(); // Refresh the list
       toast.success('Employee deleted successfully!');
     } catch (error) {
