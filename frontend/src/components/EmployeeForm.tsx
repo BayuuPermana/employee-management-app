@@ -52,14 +52,18 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit, onCance
       </div>
       <div>
         <label htmlFor="department" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Department</label>
-        <Input
-          type="text"
+        <select
           id="department"
           value={department}
           onChange={(e) => setDepartment(e.target.value)}
           required
-          className="bg-white dark:bg-gray-700"
-        />
+          className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+        >
+          <option value="">Select Department</option>
+          <option value="IT">IT</option>
+          <option value="Finance">Finance</option>
+          <option value="Marketing">Marketing</option>
+        </select>
       </div>
       <div className="flex justify-end space-x-2">
         <Button type="button" variant="outline" onClick={onCancel}>
