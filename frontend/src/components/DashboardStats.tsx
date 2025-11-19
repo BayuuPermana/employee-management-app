@@ -1,4 +1,4 @@
-import React from 'react';
+import { Users, Building2 } from 'lucide-react';
 
 interface DashboardStatsProps {
   totalEmployees: number;
@@ -7,16 +7,23 @@ interface DashboardStatsProps {
 
 const DashboardStats: React.FC<DashboardStatsProps> = ({ totalEmployees, totalDepartments }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-      <h2 className="text-2xl font-semibold mb-4">Statistics</h2>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg text-center">
-          <p className="text-3xl font-bold">{totalEmployees}</p>
-          <p className="text-gray-600 dark:text-gray-400">Total Employees</p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 flex items-center space-x-4">
+        <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-full">
+          <Users className="h-6 w-6 text-blue-600 dark:text-blue-300" />
         </div>
-        <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg text-center">
-          <p className="text-3xl font-bold">{totalDepartments}</p>
-          <p className="text-gray-600 dark:text-gray-400">Total Departments</p>
+        <div>
+          <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Employees</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalEmployees}</p>
+        </div>
+      </div>
+      <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 flex items-center space-x-4">
+        <div className="p-3 bg-green-100 dark:bg-green-900 rounded-full">
+          <Building2 className="h-6 w-6 text-green-600 dark:text-green-300" />
+        </div>
+        <div>
+          <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Departments</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalDepartments}</p>
         </div>
       </div>
     </div>

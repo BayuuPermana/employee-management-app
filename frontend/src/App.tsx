@@ -129,26 +129,22 @@ function App() {
               <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Employee Management</h1>
             </div>
             <div className="space-x-4">
-              <Button variant="ghost">Home</Button>
-              <Button variant="ghost">About</Button>
-              <Button variant="ghost">Contact</Button>
               <Button variant="outline" onClick={toggleTheme}>
                 {theme === 'light' ? 'Dark' : 'Light'}
               </Button>
             </div>
           </nav>
         </header>
-        <main className="flex-grow p-4">
+        <main className="flex-grow p-4 space-y-4">
+          <DashboardStats totalEmployees={employees.length} totalDepartments={new Set(employees.map(e => e.department)).size} />
+
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-            <div className="lg:col-span-1">
-              <RecentActivity activities={recentActivities} />
-            </div>
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-3">
               <EmployeeList employees={employees} onEdit={setEditingEmployee} onDelete={deleteEmployee} />
             </div>
             <div className="lg:col-span-1 space-y-4">
-              <DashboardStats totalEmployees={employees.length} totalDepartments={new Set(employees.map(e => e.department)).size} />
               <QuickActions onAddEmployee={() => setShowAddForm(true)} />
+              <RecentActivity activities={recentActivities} />
             </div>
           </div>
 
